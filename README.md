@@ -17,7 +17,7 @@ make
 ```
 ## Steps
 
-#### Lexical Analysis
+#### 1. Lexical Analysis
 ```bash
 cd scanner-parser
 make
@@ -183,7 +183,7 @@ make
 (\n, EOL)
 ```
 
-#### Grammatical Analysis
+#### 2. Grammatical Analysis
 ```bash
 cd scanner-parser
 make
@@ -471,7 +471,7 @@ Program  --> at line: 1
  ClassDefList: ε
 ```
 
-#### Symbol Table
+#### 3. Symbol Table Designed
 ```bash
 cd symbolTable
 make
@@ -512,6 +512,11 @@ name               type    parameter list(name: type)
 dispaly            void    b: int,  a: int
 -----------------------------------------------------------
 ```
+#### 4. Scope Design
+#### 5. Semantic Analysis
+#### 6. Intermediate Code Generation
+#### 7. Code Generation
+#### 8. use compiler
 
 ## Clean	
 
