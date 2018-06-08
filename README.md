@@ -1,4 +1,4 @@
-# Language WYJ and Its Compiler 
+# Language WYJ Design and Its Compiler 
 
 **For my girl**
 
@@ -7,7 +7,6 @@
 - bison
 
 ## Build & Run
-
 	cd scanner-parser
 	make
 	./parser test.wyj
@@ -19,11 +18,10 @@
 
 #### Lexical Analysis
 
-​	
-
 >  cd scanner-parser
 >
 > make
+>
 > ./parser test.wyj
 
 *Output the lexical unit(as a turple)*
