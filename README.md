@@ -7,22 +7,22 @@
 - bison
 
 ## Build & Run
-	cd scanner-parser
-	make
-	./parser test.wyj
-	cd symbolTable
-	make
-	./parser test.wyj
-
+```bash
+cd scanner-parser
+make
+./parser test.wyj
+cd symbolTable
+make
+./parser test.wyj
+```
 ## Steps
 
 #### Lexical Analysis
-
->  cd scanner-parser
->
-> make
->
-> ./parser test.wyj
+```bash
+cd scanner-parser
+make
+./parser test.wyj
+```
 
 *Output the lexical unit(as a turple)*
 
@@ -184,12 +184,11 @@
 ```
 
 #### Grammatical Analysis
-
-> cd scanner-parser
->
-> make
->
-> ./parser test.wyj
+```bash
+cd scanner-parser
+make
+./parser test.wyj
+```
 
 *Output the abstract grammar tree*
 
@@ -473,12 +472,11 @@ Program  --> at line: 1
 ```
 
 #### Symbol Table
-
-> cd symbolTable
->
-> make
->
-> ./parser test.wyj
+```bash
+cd symbolTable
+make
+./parser test.wyj
+```
 
 *Output the symbol table*
 
