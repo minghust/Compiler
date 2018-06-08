@@ -1,0 +1,21 @@
+class test
+{
+    int a;
+    a = 0;
+    float b;
+    b = 6.2;
+    string str;
+    str = "zhangming";
+
+    int func(int para1, float para2, string para3)
+    {
+        int a2;
+        float b3;
+    }
+
+    static float static_func(int p1, string p2)
+    {
+        int a3;
+        a3 = 4;
+    }
+}
