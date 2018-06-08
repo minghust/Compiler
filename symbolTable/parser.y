@@ -83,8 +83,7 @@ ClassDefList: ClassDefList ClassDef{ $$ = createNode("ClassDefList", 2, $1, $2);
   | { $$ = createNode("ClassDefList", 0, EMPTY); }
   ;
 
-ClassDef: KEY_CLASS IDENTIFIER '{' Fields '}' 
-{ 
+ClassDef: KEY_CLASS IDENTIFIER '{' Fields '}' { 
   $$ = createNode("ClassDef", 5, $1, $2, $3, $4, $5);
   addClass($2->__string);
 }
@@ -108,7 +107,7 @@ VariableDef: Variable ';' {
 Variable: Type IDENTIFIER { 
   $$ = createNode("Variable", 2, $1, $2);
 
-  //addVariable($2->__string, $1->name);
+  addVariable($2->__string, $1->left->name);
   }
   ;
 
@@ -130,59 +129,57 @@ FormalList: FormalList ',' Variable { $$ = createNode("FormalList", 3, $1, $2, $
   ;
 
 FunctionDef: Type IDENTIFIER '(' Formals ')' StmtBlock { 
-  $$ = createNode("FunctionDef", 6, $1, $2, $3, $4, $5, $6); 
-//   vector<ParameterTable> para_list;
-//   ParameterTable tmp;
-  
-//   Node *para_point = $4->left;
-//   while(para_point)
-//   {
-// 	  if(!para_point->left->right) // only one parameter
-// 	  {
-// 		  tmp.para_name = para_point->left->left->right->name;
-// 		  tmp.para_type = para_point->left->left->name;
-// 		  para_list.push_back(tmp);
-// 		  break;
-// 	  }
-// 	  else
-// 	  {
-// 		  tmp.para_name = para_point->left->right->right->left->right->name;
-// 		  tmp.para_type = para_point->left->right->right->left->name;
-// 		  para_list.push_back(tmp);
-// 		  para_point = para_point->left;
-// 	  }
-//   }
+        $$ = createNode("FunctionDef", 6, $1, $2, $3, $4, $5, $6); 
+        vector<ParameterTable> para_list;
+        ParameterTable tmp;
+        
+        Node *para_point = $4->left;
+        while(para_point)
+        {
+            if(!para_point->left->right) // only one parameter
+            {
+                tmp.para_name = para_point->left->left->right->__string;
+                tmp.para_type = para_point->left->left->left->name;
+                para_list.push_back(tmp);
+                break;
+            }
+            else
+            {
+                tmp.para_name = para_point->left->right->right->left->right->__string;
+                tmp.para_type = para_point->left->right->right->left->left->name;
+                para_list.push_back(tmp);
+                para_point = para_point->left;
+            }
+        }
 
-//   addFunction($2->name, $1->name, para_list);
+        addFunction($2->__string, $1->left->name, para_list);
 
   }
   | KEY_STATIC Type IDENTIFIER '(' Formals ')' StmtBlock {
-	    $$ = createNode("FunctionDef", 7, $1, $2, $3, $4, $5, $6, $7); 
-	    // vector<ParameterTable> para_list;
-		// ParameterTable tmp;
-		
-		// Node *para_point = $5->left;
-		// while(para_point)
-		// {
-		// 	if(!para_point->left->right) // only one parameter
-		// 	{
-		// 		tmp.para_name = para_point->left->left->right->name;
-		// 		tmp.para_type = para_point->left->left->name;
-		// 		para_list.push_back(tmp);
-		// 		break;
-		// 	}
-		// 	else
-		// 	{
-		// 		tmp.para_name = para_point->left->right->right->left->right->name;
-		// 		tmp.para_type = para_point->left->right->right->left->name;
-		// 		para_list.push_back(tmp);
-		// 		para_point = para_point->left;
-		// 	}
-		// }
-
-		// addFunction($2->name, $1->name, para_list);
-		
-	} 
+        $$ = createNode("FunctionDef", 7, $1, $2, $3, $4, $5, $6, $7); 
+        vector<ParameterTable> para_list;
+        ParameterTable tmp;
+        
+        Node *para_point = $4->left;
+        while(para_point)
+        {
+            if(!para_point->left->right) // only one parameter
+            {
+                tmp.para_name = para_point->left->left->right->__string;
+                tmp.para_type = para_point->left->left->left->name;
+                para_list.push_back(tmp);
+                break;
+            }
+            else
+            {
+                tmp.para_name = para_point->left->right->right->left->right->__string;
+                tmp.para_type = para_point->left->right->right->left->left->name;
+                para_list.push_back(tmp);
+                para_point = para_point->left;
+            }
+        }
+        addFunction($2->__string, $1->left->name, para_list);		
+	}
   ;
 
 StmtBlock: '{' StmtList '}' { $$ = createNode("StmtBlock", 3, $1, $2, $3); }

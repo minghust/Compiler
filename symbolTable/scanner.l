@@ -67,11 +67,11 @@ comment       "//"[^\n]*
 "ReadLine"    { printf("(ReadLine, KEY_READLINE)\n"); yylval.treenode = createNode("KEY_READLINE", 0, yylineno); return KEY_READLINE; }
 "instanceof"  { printf("(instanceof, KEY_INSTANCEOF)\n"); yylval.treenode = createNode("KEY_INSTANCEOF", 0, yylineno); return KEY_INSTANCEOF; }
 
-"void"        { printf("(void, TYPE_VOID)\n"); yylval.treenode = createNode("TYPE_VOID", 0, yylineno); return TYPE_VOID; }
-"int"         { printf("(int, TYPE_INTEGER)\n"); yylval.treenode = createNode("TYPE_INTEGER", 0, yylineno); return TYPE_INTEGER; }
-"float"       { printf("(float, TYPE_FLOAT)\n"); yylval.treenode = createNode("TYPE_FLOAT", 0, yylineno); return TYPE_FLOAT; }
-"bool"        { printf("(bool, TYPE_BOOL)\n"); yylval.treenode = createNode("TYPE_BOOL", 0, yylineno); return TYPE_BOOL; }
-"string"      { printf("(string, TYPE_STRING)\n"); yylval.treenode = createNode("TYPE_STRING", 0, yylineno); return TYPE_STRING; }
+"void"        { printf("(void, TYPE_VOID)\n"); yylval.treenode = createNode("void", 0, yylineno); return TYPE_VOID; }
+"int"         { printf("(int, TYPE_INTEGER)\n"); yylval.treenode = createNode("int", 0, yylineno); return TYPE_INTEGER; }
+"float"       { printf("(float, TYPE_FLOAT)\n"); yylval.treenode = createNode("float", 0, yylineno); return TYPE_FLOAT; }
+"bool"        { printf("(bool, TYPE_BOOL)\n"); yylval.treenode = createNode("bool", 0, yylineno); return TYPE_BOOL; }
+"string"      { printf("(string, TYPE_STRING)\n"); yylval.treenode = createNode("string", 0, yylineno); return TYPE_STRING; }
 
 "true"        { printf("(true, CONSTANT_BOOL)\n"); yylval.treenode = createNode("CONSTANT_BOOL", 0, yylineno); return CONSTANT_BOOL; }
 "false"       { printf("(false, CONSTANT_BOOL)\n"); yylval.treenode = createNode("CONSTANT_BOOL", 0, yylineno); return CONSTANT_BOOL; }

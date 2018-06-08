@@ -8,7 +8,7 @@
 //    ε   : e.g. createNode("Stmt", 0, -1)
 Node* createNode(string name, int num, ...)
 {
-    Node * root = (Node *)malloc(sizeof(Node));
+    Node * root = new Node();
     root->name = name;
     va_list type;
     va_start(type, num);
@@ -61,9 +61,6 @@ void traverse(Node *root, int depth)
         }
         
         cout << root->name;
-        // printf("%s", root->name);
-        // Terminal     => print it's name and linenum, especially constant, print it's value   
-        // Non-terminal => print it's name and linenum
         if(root->linenum != EMPTY)
         {
             if(("IDENTIFIER"== root->name) || ("CONSTANT_BOOL"== root->name) || ("CONSTANT_STRING"==root->name)|| ("CONSTANT_NULL"==root->name))

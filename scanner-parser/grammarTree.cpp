@@ -8,7 +8,7 @@
 //    ε   : e.g. createNode("Stmt", 0, -1)
 Node* createNode(string name, int num, ...)
 {
-    Node * root = (Node *)malloc(sizeof(Node));
+    Node * root = new Node();
     root->name = name;
     va_list type;
     va_start(type, num);

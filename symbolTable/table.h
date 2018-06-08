@@ -7,6 +7,7 @@
 
 #include <vector>
 #include <iostream>
+#include <iomanip>
 #include <string>
 
 using namespace std;
@@ -46,10 +47,6 @@ typedef struct variabletable {
 }VariableTable;
 /*****************************/
 
-vector<ClassTable> class_table;
-vector<ParameterTable> parameter_table;
-vector<FunctionTable> function_table;
-vector<VariableTable> variable_table;
 
 void addClass(string class_name);
 
