@@ -1,0 +1,20 @@
+class A {
+    int num;
+    string foo(string str)
+    {
+        Print(str);
+        return str;
+    }
+    float dispaly(int a, int b)
+    {
+        int x;
+        int i;
+        float f;
+        x = true; // semantic error 1
+        f = 3.14;
+        i = f; // semantic error 2
+        num = foo("zhangming"); // semantic error 3
+        return f;
+    }
+    
+}

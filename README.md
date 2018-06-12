@@ -471,9 +471,9 @@ Program  --> at line: 1
  ClassDefList: ε
 ```
 
-#### 3. Symbol Table Designed
+#### 3. Symbol Table Design
 ```bash
-cd symbolTable
+cd semantic
 make
 ./parser test.wyj
 ```
@@ -513,7 +513,41 @@ dispaly            void    b: int,  a: int
 -----------------------------------------------------------
 ```
 #### 4. Scope Design
+single scope.(lazy...)
 #### 5. Semantic Analysis
+use the grammar tree, to detect type conflict.
+```text
+// error code sample:
+class A {
+    int num;
+    string foo(string str)
+    {
+        Print(str);
+        return str;
+    }
+    float dispaly(int a, int b)
+    {
+        int x;
+        int i;
+        float f;
+        x = true; // semantic error 1
+        f = 3.14;
+        i = f; // semantic error 2
+        num = foo("zhangming"); // semantic error 3
+        return f;
+    }
+    
+}
+```
+
+*Output*:
+
+```text
+Semantic Error at line 13: constant type is not satisfied with x
+Semantic Error at line 15: f type is not satisfied with i
+Semantic Error at line 16: function foo type is not satisfied with num
+```
+
 #### 6. Intermediate Code Generation
 #### 7. Code Generation
 #### 8. use compiler
@@ -526,7 +560,7 @@ feel easy to
 $ make clean
 ```
 
-## LiCENSE
+## LICENSE
 
 MIT License
 

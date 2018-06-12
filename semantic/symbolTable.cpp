@@ -2,7 +2,7 @@
 // Created by MingZhang on 2018-05-18
 //
 
-#include "table.h"
+#include "symbolTable.h"
 
 
 vector<ClassTable> class_table;
