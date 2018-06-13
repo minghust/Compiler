@@ -4,6 +4,8 @@
 
 #include "semantic.h"
 
+vector<string>semantic_error;
+
 /* 
  * check constant's type is satisfied
  * with the lvalue's type or not 
@@ -79,4 +81,16 @@ bool checkCall(string leftname, string rightname)
     }
 
     return false;
+}
+
+void OutputSemanticError() 
+{
+    if(semantic_error.size()!=0)
+    {
+        cout << endl << "Semantic Errors:" << endl<<endl;
+    }
+    for(int i=0;i<semantic_error.size();i++)
+    {
+        cout << semantic_error[i] << endl;
+    }
 }

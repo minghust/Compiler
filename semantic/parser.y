@@ -77,6 +77,7 @@ Program: ClassDef ClassDefList {
     $$ = createNode("Program", 2, $1, $2);
     traverse($$, 0);
     displayTable();
+    OutputSemanticError();
 }
     ;
 
@@ -206,22 +207,34 @@ SimpleStmt: LValue '=' Expr { $$ = createNode("SimpleStmt", 3, $1, $2, $3);
     {
         if(checkConstant($1->left->__string, $3->left->left->name) == false)
         {
-            cout << "Semantic Error at line " << yylineno << ": constant type is not satisfied with " << $1->left->__string << endl;
+            stringstream ss;
+            ss << yylineno;
+            string error = "Semantic Error at line "+ss.str()+": constant type is not satisfied with "+$1->left->__string;
+            // cout << "Semantic Error at line " << yylineno << ": constant type is not satisfied with " << $1->left->__string << endl;
+            semantic_error.push_back(error);
         }
     }
     else if($3->left->name == "LValue")
     {
         if(checkLvalue($1->left->__string, $3->left->left->__string) == false)
         {
-            cout << "Semantic Error at line " << yylineno << ": " << $3->left->left->__string << " type is not satisfied with " << $1->left->__string << endl;
+            stringstream ss;
+            ss << yylineno;
+            string error = "Semantic Error at line "+ss.str()+ ": "+ $3->left->left->__string+ " type is not satisfied with "+ $1->left->__string;
+            // cout << "Semantic Error at line " << yylineno << ": " << $3->left->left->__string << " type is not satisfied with " << $1->left->__string << endl;
+            semantic_error.push_back(error);
         }
     }
     else if($3->left->name == "Call")
     {
         if(checkCall($1->left->__string, $3->left->left->__string) == false)
         {
-            cout << "Semantic Error at line " << yylineno << ": ";
-            cout << "function " << $3->left->left->__string << " type is not satisfied with " << $1->left->__string << endl;
+            stringstream ss;
+            ss << yylineno;
+            string error = "Semantic Error at line "+ss.str()+ ": "+"function " + $3->left->left->__string + " type is not satisfied with " +$1->left->__string;
+            // cout << "Semantic Error at line " << yylineno << ": ";
+            // cout << "function " << $3->left->left->__string << " type is not satisfied with " << $1->left->__string << endl;
+            semantic_error.push_back(error);
         }
     }
 }
