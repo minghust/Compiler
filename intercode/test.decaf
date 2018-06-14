@@ -1,0 +1,35 @@
+class test
+{
+	int m;
+	int a;
+	void dispaly(int a, int b)
+	{
+		int x;
+		float f;
+		bool b;
+		bool d;
+		bool e;
+		string s;
+		x = -211;
+		x = -0x1a;
+		f = 0.001;
+		f = -1.2e-1;
+		b = true;
+		s = "just test";
+		x = a + b;
+		if(a == b)
+		{
+			if(c == d)
+				Print("ifif");
+			else
+				Print("ifelse");
+		}
+		else
+		{
+			if(c == d)
+				Print("elseif");
+			else
+				Print("elseelse");
+		}
+	}
+}

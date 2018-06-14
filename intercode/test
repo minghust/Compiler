@@ -1,0 +1,17 @@
+class A
+{
+    int display(int num1, int num2)
+    {
+        int height;
+        int width;
+        int size;
+        height = 20;
+        width = 30;
+        size = height * width;
+        int a;
+        a = height;
+        int b;
+        b = display(1, 2);
+        return num1+num2;
+    }
+}
