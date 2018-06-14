@@ -5,13 +5,21 @@ class A
         int height;
         int width;
         int size;
+        float f1;
+        float f2;
+        float f3;
         height = 20;
         width = 30;
+        string s;
+        s = "hust csee1501 ZhangMing";
         size = height * width;
         int a;
         a = height;
-        int b;
-        b = display(1, 2);
-        return num1;
+        f1 = 2.3;
+        f2 = 4.5;
+        f3 = f1 + f2;
+        int res;
+        res = num1+num2;
+        return res;
     }
 }
