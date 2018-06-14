@@ -2,6 +2,8 @@
 
 **For my girl**
 
+###### Author: Ming Zhang
+
 ## Essential
 - flex
 - bison
@@ -516,8 +518,16 @@ dispaly            void    b: int,  a: int
 single scope.(lazy...)
 #### 5. Semantic Analysis
 use the grammar tree, to detect type conflict.
+
+```bash
+cd semantic
+make
+./parser test.wyj
+./parser error.wyj
+```
+
 ```text
-// error code sample:
+// error code sample, in error.wyj:
 class A {
     int num;
     string foo(string str)
@@ -540,7 +550,7 @@ class A {
 }
 ```
 
-*Output*:
+*Output(you'll find 3 semantic errors in error.wyj)*:
 
 ```text
 Semantic Error at line 13: constant type is not satisfied with x
@@ -549,8 +559,55 @@ Semantic Error at line 16: function foo type is not satisfied with num
 ```
 
 #### 6. Intermediate Code Generation
+
+use TAC code
+
+```bash
+cd intercode
+make
+./parser test
+```
+
+*here is the sample code*
+
+```text
+class A
+{
+    int display(int num1, int num2)
+    {
+        int height;
+        int width;
+        int size;
+        height = 20;
+        width = 30;
+        size = height * width;
+        int a;
+        a = height;
+        int b;
+        b = display(1, 2);
+        return num1;
+    }
+}
+```
+
+*here is the inter code*
+
+```text
+CLASS A 
+FUNCTION display : 
+PARAMETER num2 
+PARAMETER num1 
+height := #20 
+width := #30 
+size := height * height 
+a := height 
+b := CALL display 
+RETURN num1 
+```
+
 #### 7. Code Generation
-#### 8. use compiler
+
+loading...
 
 ## Clean	
 
