@@ -39,6 +39,8 @@ void printOperand(Operand &p)
 
 void printInterCode(void)
 {
+    cout << endl << endl;
+    cout << ">>>>>>>>>>>>>>>>>>>>>> Inter Code <<<<<<<<<<<<<<<<<<<" << endl;
     InterCode p;
     for(int i=0;i<interList.size();i++){
         p = interList[i];
@@ -225,6 +227,78 @@ void traverseTree(Node *root) {
                 icode.assign_op.right = rightop;
                 insertInterCode(icode);
             }
+            else if(root->left->right->right->left->right->name == "+")
+            {
+                icode.kind = ADD;
+                Node *expr1 = root->left->right->right->left->left->left;
+                Node *expr2 = root->left->right->right->left->right->right->left->left;
+
+                Operand r1, r2;
+                r1.kind = VARIABLE;
+                r2.kind = VARIABLE;
+                r1.name = expr1->__string;
+                r2.name = expr1->__string;
+
+                icode.binary_op.result = leftop;
+                icode.binary_op.op1 = r1;
+                icode.binary_op.op2 = r2;
+
+                insertInterCode(icode);
+            }
+            else if(root->left->right->right->left->right->name == "-")
+            {
+                icode.kind = SUB;
+                Node *expr1 = root->left->right->right->left->left->left;
+                Node *expr2 = root->left->right->right->left->right->right->left->left;
+
+                Operand r1, r2;
+                r1.kind = VARIABLE;
+                r2.kind = VARIABLE;
+                r1.name = expr1->__string;
+                r2.name = expr1->__string;
+
+                icode.binary_op.result = leftop;
+                icode.binary_op.op1 = r1;
+                icode.binary_op.op2 = r2;
+
+                insertInterCode(icode);
+            }
+            else if(root->left->right->right->left->right->name == "*")
+            {
+                icode.kind = MUL;
+                Node *expr1 = root->left->right->right->left->left->left;
+                Node *expr2 = root->left->right->right->left->right->right->left->left;
+
+                Operand r1, r2;
+                r1.kind = VARIABLE;
+                r2.kind = VARIABLE;
+                r1.name = expr1->__string;
+                r2.name = expr1->__string;
+
+                icode.binary_op.result = leftop;
+                icode.binary_op.op1 = r1;
+                icode.binary_op.op2 = r2;
+
+                insertInterCode(icode);
+            }
+            else if(root->left->right->right->left->right->name == "/")
+            {
+                icode.kind = DIV;
+                Node *expr1 = root->left->right->right->left->left->left;
+                Node *expr2 = root->left->right->right->left->right->right->left->left;
+
+                Operand r1, r2;
+                r1.kind = VARIABLE;
+                r2.kind = VARIABLE;
+                r1.name = expr1->__string;
+                r2.name = expr1->__string;
+
+                icode.binary_op.result = leftop;
+                icode.binary_op.op1 = r1;
+                icode.binary_op.op2 = r2;
+
+                insertInterCode(icode);
+            }
         }
         // else if(root->name == "Actuals") // args not null
         // {
@@ -251,10 +325,22 @@ void traverseTree(Node *root) {
         // }
         else if(root->name == "ReturnStmt")
         {
-            
+            InterCode icode;
+            icode.kind = RETURN;
+            Operand returnop;
+            returnop.kind = VARIABLE;
+
+            if(root->left->right)
+            {
+                returnop.name = root->left->right->left->left->__string;
+            }
+            else 
+            {
+                returnop.name = "";
+            }
+            icode.single_op.op = returnop;
+            insertInterCode(icode);
         }
-
-
         traverseTree(root->left);
         traverseTree(root->right);
     }

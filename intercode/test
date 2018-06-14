@@ -12,6 +12,6 @@ class A
         a = height;
         int b;
         b = display(1, 2);
-        return num1+num2;
+        return num1;
     }
 }
