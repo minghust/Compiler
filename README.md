@@ -1,8 +1,4 @@
-# Language WYJ Design and Its Compiler 
-
-**For my girl**
-
-###### Author: Ming Zhang
+# Language WYJ Design and Its Compiler
 
 ## Essential
 - flex
